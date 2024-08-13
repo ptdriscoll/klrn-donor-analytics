@@ -1,0 +1,12 @@
+name: klrn-donor-analysis
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - openpyxl
+  - xlsxwriter
+  - matplotlib
+  - scikit-learn
+  - scipy

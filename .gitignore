@@ -1,0 +1,61 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# virtual environment directories
+venv/
+env/
+
+# ignore all data files except .gitkeep
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+output/*
+!output/.gitkeep
+
+# ignore all test data output files except .gitkeep
+tests/data/raw/*
+!tests/data/raw/.gitkeep
+
+tests/data/processed/*
+!tests/data/processed/.gitkeep
+
+tests/output/*
+!tests/output/.gitkeep
+
+# ignore all test data expected files except .gitkeep
+tests/data_expected/processed/*
+!tests/data_expected/processed/.gitkeep
+
+tests/output_expected/cluster/*
+tests/output_expected/new_donors/*
+tests/output_expected/passport_gifts/*
+tests/output_expected/passport_only/*
+!tests/output_expected/cluster/.gitkeep
+!tests/output_expected/new_donors/.gitkeep
+!tests/output_expected/passport_gifts/.gitkeep
+!tests/output_expected/passport_only/.gitkeep
+
+# additional files
+reference/
+*.log
+*.tmp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+# Vim swap files
+*.swp
+
+# backup files
+*.bak
