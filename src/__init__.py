@@ -50,7 +50,11 @@ else:
     DATA_EXPECTED_DONORS_WORKING = os.path.join(DATA_EXPECTED_PROCESSED_DIR, 'donors-working.xlsx')
     DATA_EXPECTED_DONORS_PROCESSED = os.path.join(DATA_EXPECTED_PROCESSED_DIR, 'donors.csv')
     DATA_EXPECTED_DONORS_NEW_PROCESSED = os.path.join(DATA_EXPECTED_PROCESSED_DIR, 'donors-new.csv')
-    DATA_EXPECTED_DEMOGRAPHICS_PROCESSED = os.path.join(DATA_EXPECTED_PROCESSED_DIR, 'demographics.csv')
+    DATA_EXPECTED_DEMOGRAPHICS_PROCESSED = os.path.join(DATA_EXPECTED_PROCESSED_DIR, 'demographics.csv')    
+  
+    # ==================================================
+    # CUSTOM DATES FOR TESTS
+    # ================================================== 
 
     DATA_START = '2019-10-01' 
     DATA_END = '2022-09-30'
