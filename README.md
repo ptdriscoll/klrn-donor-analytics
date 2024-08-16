@@ -34,17 +34,19 @@ Verified spreadsheets for expected outcomes are placed in `tests/data_expected/`
 
 Configuration is set up under `src/config.py`:
 
+- All date formats are `'2022-09-30'`
 - `DATA_DONORS` = `<name of raw xlsx file from Allegiance database download>`
 - `DATA_DEMOGRAPHICS` = `<name of xlsx file with demographics from WealthEngine download>`
 - `DATA_START` = `<start of date range to filter data>`
 - `DATA_END` = `<end of date range to filter data, which is inclusive>`
 - `YEAR_CUTOFF` = `<pandas shorthand code representing a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)
-- `PASSPORT_APP` = `<path to directory where Passport database is located on computer system>`
+- `PASSPORT_APP` = `<path to directory where Passport database app is located on computer system>`
 - `PASSPORT_VIEWS_START_DATE` = `<start of date range to filter Passport views>`
 - `PASSPORT_VIEWS_END_DATE` = `<end of date range to filter Passport views, which is inclusive>`
 
-Custom dates for tests is set up at the end of `src/__init__.py`, under the comment `CUSTOM DATES FOR TESTS`:
+Dates for tests are set up at the end of `src/__init__.py`, under the comment `CUSTOM DATES FOR TESTS`:
 
+- All date formats are `'2022-09-30'`
 - `DATA_START` = `<start of date range to filter data>`
 - `DATA_END` = `<end of date range to filter data, which is inclusive>`
 - `YEAR_CUTOFF` = `<pandas shorthand code representing a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference]
@@ -59,13 +61,13 @@ The environment is defined in `environment.yml`. By default `name` is set to `kl
 
 In an Anaconda Prompt, from the application's root directory, there are two options to set up the environment:
 
-- Option 1, to set up a system-wide environment:
+- Option 1, system-wide environment:
 
   - **Create Environment:** `conda env create -f environment.yml`
   - **Activate Environment:** `conda activate <name>`
   - **Update Environment:** `conda env update -f environment.yml`
 
-- Option 2, to set up an environment in the working directory:
+- Option 2, working-directory environment:
 
   - **Create Environment:** `conda env create -p venv -f environment.yml`
   - **Activate Environment:** `conda activate ./venv`
@@ -73,7 +75,7 @@ In an Anaconda Prompt, from the application's root directory, there are two opti
 
 ### Running Commands
 
-Processes data and outputs to `data/processed/`:
+Processes data, and outputs to `data/processed/`:
 
 - `python -m src.process.donors`
 - `python -m src.process.new_donors`
@@ -82,17 +84,19 @@ Processes data and outputs to `data/processed/`:
 Runs cluster analysis (if needed, also runs `src.process.donors`), and outputs to `output/cluster/`:
 
 - `python -m src.cluster.elbow_plot <number>`
-  - Evaluates the optimal number of clusters by visualizing where adding more clusters no longer significantly reduces the tightness of clusters. The `<number>` parameter is optional and defaults to `9`, plotting a range from 1 to 9 clusters.
+  - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters. The `<number>` parameter is optional and defaults to `9`, plotting a range from 1 to 9 clusters.
 - `python -m src.cluster.pca_plots <number> <number>`
-  - Evaluates the optimal number of clusters by creating PCA scatterplots that show a range of clusters. The `<number> <number>` parameters are optional and default to `3 5`, generating plots for three, four, and five clusters.
+  - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters. The `<number> <number>` parameters are optional and default to `3 5`, generating plots for three, four, and five clusters.
 - `python -m src.cluster.kmeans <number>`
-  - Runs cluster analysis, generates a PCA plot and creates a spreadsheet that assigns cluster groups to donors. The `<number>` parameter is optional and defaults to `4`, creating four cluster groups.
+  - Runs cluster analysis, generates a PCA model plot, frequencies plot and a spreadsheet (`assignments.csv`) assigning cluster groups to donors. The `<number>` parameter is optional and defaults to `4`, creating four cluster groups.
 
-python -m src.segment.new_donors
-python -m src.segment.passport_gifts
-python -m src.segment.passport_only
+Creates donor segments (if needed, also runs either `src.process.donors` or `src.process.new_donors`), and outputs `assignments.csv` to respective folder in `output/`
 
-#these commands will only run if their respective cluster or segment tests have been run first
+- `python -m src.segment.new_donors`
+- `python -m src.segment.passport_gifts`
+- `python -m src.segment.passport_only`
+
+After cluster or segment commands have run, demographics can be added:
 
 python -m src.augment.demographics cluster
 python -m src.augment.demographics new_donors
