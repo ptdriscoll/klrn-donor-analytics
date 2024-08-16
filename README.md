@@ -55,7 +55,7 @@ Dates for tests are set up at the end of `src/__init__.py`, under the comment `C
 
 ### Code Setup
 
-This application uses a Conda enviornment to manage dependencies. If you don't have Conda installed, you get it at [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://docs.anaconda.com/miniconda/).
+This application uses a Conda environment to manage dependencies. If you don't have Conda installed, you get it at [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://docs.anaconda.com/miniconda/).
 
 The environment is defined in `environment.yml`. By default `name` is set to `klrn-donor-analysis`, but that can be changed.
 
@@ -81,32 +81,65 @@ Processes data, and outputs to `data/processed/`:
 - `python -m src.process.new_donors`
 - `python -m src.process.demographics`
 
-Runs cluster analysis (if needed, also runs `src.process.donors`), and outputs to `output/cluster/`:
+Runs cluster analysis, first clearing `output/cluster/` and then outputting there (if needed, also runs `src.process.donors`):
 
 - `python -m src.cluster.elbow_plot <number>`
-  - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters. The `<number>` parameter is optional and defaults to `9`, plotting a range from 1 to 9 clusters.
+  - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters. The `<number>` parameter is optional; if omitted, it defaults to `9`, plotting a range from 1 to 9 clusters.
 - `python -m src.cluster.pca_plots <number> <number>`
-  - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters. The `<number> <number>` parameters are optional and default to `3 5`, generating plots for three, four, and five clusters.
+  - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters. The `<number> <number>` parameters are both optional; you can provide both, one or none. If omitted, the second argument defaults to one higher than the first, and the first defaults to `3`. So, no arguments would default to `3 4` and generate one plot of three clusters.
 - `python -m src.cluster.kmeans <number>`
-  - Runs cluster analysis, generates a PCA model plot, frequencies plot and a spreadsheet (`assignments.csv`) assigning cluster groups to donors. The `<number>` parameter is optional and defaults to `4`, creating four cluster groups.
+  - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots. The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
 
-Creates donor segments (if needed, also runs either `src.process.donors` or `src.process.new_donors`), and outputs `assignments.csv` to respective folder in `output/`
+Creates donor segments, first clearing the respective folder in `output/<segment>` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
 
 - `python -m src.segment.new_donors`
 - `python -m src.segment.passport_gifts`
 - `python -m src.segment.passport_only`
 
-After cluster or segment commands have run, demographics can be added:
+Demographics per group can be added after cluster or segment commands have run, with `demographics.csv` outputted to respective folder in `output/<segment>`:
 
-python -m src.augment.demographics cluster
-python -m src.augment.demographics new_donors
-python -m src.augment.demographics passport_gifts
-python -m src.augment.demographics passport_only
+- `python -m src.augment.demographics cluster`
+- `python -m src.augment.demographics new_donors`
+- `python -m src.augment.demographics passport_gifts`
+- `python -m src.augment.demographics passport_only`
 
-python -m src.augment.passport cluster
-python -m src.augment.passport new_donors
-python -m src.augment.passport passport_gifts
-python -m src.augment.passport passport_only
+Passport PBS video views per group can be added after cluster or segment commands have run, and if the [Passport database app](https://github.com/ptdriscoll/klrn-passport-analytics-database) is available, with `demographics_<group>.csv` files outputted to respective folder in `output/<segment>`:
+
+- `python -m src.augment.passport cluster`
+- `python -m src.augment.passport new_donors`
+- `python -m src.augment.passport passport_gifts`
+- `python -m src.augment.passport passport_only`
+
+### Running Tests
+
+Tests processing data:
+
+- `python -m tests.src.process.donors`
+- `python -m tests.src.process.new_donors`
+- `python -m tests.src.process.demographics`
+
+Tests cluster analysis:
+
+- `python -m tests.src.cluster.kmeans`
+
+Tests segment creation:
+
+- `python -m tests.src.segment.new_donors`
+- `python -m tests.src.segment.passport_gifts`
+- `python -m tests.src.segment.passport_only`
+
+Tests adding demographics, after respective cluster or segment tests have run
+
+- `python -m tests.src.augment.demographics new_donors`
+- `python -m tests.src.augment.demographics passport_gifts`
+- `python -m tests.src.augment.demographics passport_only`
+
+Tests adding Passport views, after respective cluster or segment commands have run, and if the [Passport database app](https://github.com/ptdriscoll/klrn-passport-analytics-database) is available:
+
+- `python -m tests.src.augment.passport cluster`
+- `python -m tests.src.augment.passport new_donors`
+- `python -m tests.src.augment.passport passport_gifts`
+- `python -m tests.src.augment.passport passport_only`
 
 ### References
 
@@ -115,3 +148,4 @@ python -m src.augment.passport passport_only
 - [pandas Time series / date functionality](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)
 - [Anaconda](https://www.anaconda.com/download/)
 - [Miniconda](https://docs.anaconda.com/miniconda/)
+- [scikit-learn Clustering](https://scikit-learn.org/stable/modules/clustering.html)
