@@ -141,6 +141,11 @@ Tests adding Passport views, after respective cluster or segment commands have r
 - `python -m tests.src.augment.passport passport_gifts`
 - `python -m tests.src.augment.passport passport_only`
 
+### KLRN Analytic Reports
+
+- [Donor Profiles 2022](reports/KLRN_Donor_Profiles_2022.pdf)
+- [Passport Audience 2022](reports/KLRN_Passport_Audience_2022.pdf)
+
 ### References
 
 - [Allegiance Fundraising: Analysis Reports User Guide](https://alleg.tv/userguides172/FR-AnalysisReports/AnalysisReports.html)
