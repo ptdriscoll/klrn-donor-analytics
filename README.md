@@ -84,11 +84,14 @@ Processes data, and outputs to `data/processed/`:
 Runs cluster analysis, first clearing `output/cluster/` and then outputting there (if needed, runs `src.process.donors`):
 
 - `python -m src.cluster.elbow_plot <number>`
-  - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters. The `<number>` parameter is optional; if omitted, it defaults to `9`, plotting a range from 1 to 9 clusters.
+  - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters.
+  - The `<number>` parameter is optional; if omitted, it defaults to `9`, plotting a range from 1 to 9 clusters.
 - `python -m src.cluster.pca_plots <number> <number>`
-  - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters. The `<number> <number>` parameters are both optional; you can provide both, one or none. If omitted, the second argument defaults to one higher than the first, and the first defaults to `3`. So, no arguments would default to `3 4` and generate one plot of three clusters.
+  - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters.
+  - The `<number> <number>` parameters are both optional; you can provide both, one or none. If omitted, the second argument defaults to one higher than the first, and the first defaults to `3`. So, no arguments would default to `3 4` and generate one plot of three clusters.
 - `python -m src.cluster.kmeans <number>`
-  - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots. The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
+  - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots.
+  - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
 
 Creates donor segments, first clearing the respective folder in `output/<segment>` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
 
