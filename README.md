@@ -18,7 +18,7 @@ The database query is constructed with Allegiance's [Analysis Reports](https://a
 
 Using a list of donor ids from the Allegiance download, demographics are pulled into a separate .xlsx file from WealthEngine. This Excel file needs to have `AcctID`, `Gender`, `Age`, and `Income` columns. The file is placed in the `data/raw/` directory.
 
-PBS Passport video views are layered over data using [KLRN's Passport Analytics Database](https://github.com/ptdriscoll/klrn-passport-analytics-database), which is a desktop application.
+PBS Passport video views are layered over data using [KLRN's Passport Analytics Database](https://github.com/ptdriscoll/klrn-passport-analytics-database), a desktop application.
 
 Tests can be set up by running a small dataset from an Allegiance download that covers all variables, and in turn using the ids from that data pull to get demographics and Passport views, and then inspecting results to make sure they are what was expected. NOTE: code for cluster tests always produce four clusters.
 
@@ -39,7 +39,7 @@ Configuration is set up under `src/config.py`:
 - `DATA_DEMOGRAPHICS` = `<name of xlsx file with demographics from WealthEngine download>`
 - `DATA_START` = `<start of date range to filter data>`
 - `DATA_END` = `<end of date range to filter data, which is inclusive>`
-- `YEAR_CUTOFF` = `<pandas shorthand code representing a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)
+- `YEAR_CUTOFF` = `<pandas shorthand code for a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)
 - `PASSPORT_APP` = `<path to directory where Passport database app is located on computer system>`
 - `PASSPORT_VIEWS_START_DATE` = `<start of date range to filter Passport views>`
 - `PASSPORT_VIEWS_END_DATE` = `<end of date range to filter Passport views, which is inclusive>`
@@ -49,7 +49,7 @@ Dates for tests are set up at the end of `src/__init__.py`, under the comment `C
 - All date formats are `'2022-09-30'`
 - `DATA_START` = `<start of date range to filter data>`
 - `DATA_END` = `<end of date range to filter data, which is inclusive>`
-- `YEAR_CUTOFF` = `<pandas shorthand code representing a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference]
+- `YEAR_CUTOFF` = `<pandas shorthand code for a time interval>` - i.e., the fiscal year is `Y-SEP` - [reference](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)
 - `PASSPORT_VIEWS_START` = `<start of date range to filter Passport views>`
 - `PASSPORT_VIEWS_END` = `<end of date range to filter Passport views, which is inclusive>`
 
@@ -57,7 +57,7 @@ Dates for tests are set up at the end of `src/__init__.py`, under the comment `C
 
 This application uses a Conda environment to manage dependencies. If you don't have Conda installed, you get it at [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://docs.anaconda.com/miniconda/).
 
-The environment is defined in `environment.yml`. By default `name` is set to `klrn-donor-analysis`, but that can be changed.
+The environment is defined in `environment.yml`. The `name` is set to `klrn-donor-analysis`, which can be changed.
 
 In an Anaconda Prompt, from the application's root directory, there are two options to set up the environment:
 
@@ -81,7 +81,7 @@ Processes data, and outputs to `data/processed/`:
 - `python -m src.process.new_donors`
 - `python -m src.process.demographics`
 
-Runs cluster analysis, first clearing `output/cluster/` and then outputting there (if needed, also runs `src.process.donors`):
+Runs cluster analysis, first clearing `output/cluster/` and then outputting there (if needed, runs `src.process.donors`):
 
 - `python -m src.cluster.elbow_plot <number>`
   - Evaluates optimal number of clusters by generating an elbow plot that visualizes where adding more clusters no longer significantly reduces tightness within clusters. The `<number>` parameter is optional; if omitted, it defaults to `9`, plotting a range from 1 to 9 clusters.
