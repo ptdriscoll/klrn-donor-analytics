@@ -11,7 +11,7 @@ def main():
     df_passport_gifts = set_categories(df, output_dir)
     aggregate(df_passport_gifts, output_dir)
 
-    #compare assignment.csv files
+    #compare assignments.csv files
     assignments = os.path.join(output_dir, 'assignments.csv')
     assignments_expected = os.path.join(output_expected_dir, 'assignments.csv')
     compare_spreadsheets(assignments, assignments_expected)

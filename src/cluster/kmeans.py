@@ -4,8 +4,8 @@ import sys
 from src.helpers import get_data, get_output_dir
 from .helpers import (
     parse_args,
-    merge_cluster_labels, 
     prep_data,
+    merge_cluster_labels, 
     plot_cluster_sizes
 )
 
@@ -18,7 +18,8 @@ def run_kmeans(
         df,
         output_dir,
         clusters_pca_scatterplots=range(4,5),
-        kmeans_n_init=30
+        kmeans_n_init=30,
+        kmeans_random_state=None        
     ):    
     """
     Runs a k-means cluster analysis on a pandas.DataFrame from data/processed/donors.csv, uses
@@ -43,7 +44,7 @@ def run_kmeans(
         
     #interpret cluster solution using PCA scatterplots
     for x in clusters_pca_scatterplots:
-        model = KMeans(n_clusters=x, n_init=kmeans_n_init)
+        model = KMeans(n_clusters=x, n_init=kmeans_n_init, random_state=kmeans_random_state)
         model.fit(df)
         model.predict(df)
         ser_cluster_labels = pd.Series(model.labels_)
@@ -59,7 +60,7 @@ def run_kmeans(
         plt.clf()
         
 
-    plt.Circle(( 0.5 , 0.5 ), 0.2 ) 
+    plt.Circle((0.5 , 0.5), 0.2 ) 
     plt.show()
     plt.clf()
 

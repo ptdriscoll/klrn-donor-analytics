@@ -10,7 +10,9 @@ A comprehensive suite of Python tools to analyze KLRN TV donors. Features includ
 
 This suite provides a framework to understand KLRN donors through comprehensive analysis and data integration.
 
-![KLRN Donor Profiles](images/KLRN_Donor_Profiles_2022.png)
+<p align="center">
+  <img src="images/KLRN_Donor_Profiles_2022.png" alt="KLRN Donor Profiles"/>
+</p>
 
 ### Data Setup
 
@@ -130,7 +132,7 @@ Tests processing data:
 
 Tests cluster analysis:
 
-- `python -m tests.src.cluster.kmeans`
+- `python -m tests.src.cluster.kmeans` (also runs src.cluster.pca_plots as part of test)
 
 Tests segment creation:
 

@@ -10,12 +10,12 @@ def main():
     output_expected_dir = output_dir.replace('output', 'output_expected')
     segment(df, output_dir)
 
-    #compare assignment_2020.csv files
+    #compare assignments_2020.csv files
     assignments = os.path.join(output_dir, 'assignments_2020.csv')
     assignments_expected = os.path.join(output_expected_dir, 'assignments_2020.csv')
     compare_spreadsheets(assignments, assignments_expected)
 
-    #compare assignment_2021.csv files
+    #compare assignments_2021.csv files
     assignments = os.path.join(output_dir, 'assignments_2021.csv')
     assignments_expected = os.path.join(output_expected_dir, 'assignments_2021.csv')
     compare_spreadsheets(assignments, assignments_expected)
