@@ -10,9 +10,7 @@ A comprehensive suite of Python tools to analyze KLRN TV donors. Features includ
 
 This suite provides a framework to understand KLRN donors through comprehensive analysis and data integration.
 
-<p align="center">
-  <img src="images/KLRN_Donor_Profiles_2022.png" alt="KLRN Donor Profiles"/>
-</p>
+![KLRN Donor Profiles](images/KLRN_Donor_Profiles_2022.png)
 
 ### Data Setup
 
