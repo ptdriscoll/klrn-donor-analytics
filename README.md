@@ -10,6 +10,8 @@ A comprehensive suite of Python tools to analyze KLRN TV donors. Features includ
 
 This suite provides a framework to understand KLRN donors through comprehensive analysis and data integration.
 
+![KLRN Donor Profiles](images/KLRN_Donor_Profiles_2022.png)
+
 ### Data Setup
 
 Cluster and segment analyses use data downloaded into an .xlsx file from an Allegiance Fundraising database. The Excel file is placed in the `data/raw/` directory.
@@ -92,6 +94,11 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
 - `python -m src.cluster.kmeans <number>`
   - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots.
   - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
+
+<p align="center">
+  <img src="images/cluster_elbow.png" width="50%" alt="Elbow Plot"/>
+  <img src="images/cluster_model_4.png" width="44.5%" alt="PCA Cluster Model"/>
+</p>
 
 Creates donor segments, first clearing the respective folder in `output/<segment>` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
 
