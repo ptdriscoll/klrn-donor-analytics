@@ -134,7 +134,7 @@ Tests cluster analysis:
 
 - `python -m tests.src.cluster.kmeans`
   - code produces four clusters
-  - also runs src.cluster.pca_plots
+  - also runs `src.cluster.pca_plots`
 
 Tests segment creation:
 
