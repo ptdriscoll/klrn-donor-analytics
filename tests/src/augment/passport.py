@@ -28,15 +28,6 @@ def run_compare_spreadsheets(input_file, name):
 def main():
     arg = parse_args()
     input_file = os.path.join(ROOT_DIR, 'tests', 'output', arg, 'assignments.csv')
-
-    if arg == 'cluster':
-        input_file_dir_path = Path(os.path.dirname(input_file))
-        if input_file_dir_path.is_dir():
-            file_copy = input_file.replace('output', 'output_expected')
-            shutil.copy(file_copy, input_file)
-
-        else:    
-            print('\nDirectory does not exist:\n', '  ', input_file_dir_path)    
     
     if os.path.isfile(input_file):
         get_passport_views_per_group(arg, input_file)

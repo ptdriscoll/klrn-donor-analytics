@@ -132,7 +132,9 @@ Tests processing data:
 
 Tests cluster analysis:
 
-- `python -m tests.src.cluster.kmeans` (also runs src.cluster.pca_plots as part of test)
+- `python -m tests.src.cluster.kmeans`
+  - code produces four clusters
+  - also runs src.cluster.pca_plots
 
 Tests segment creation:
 
@@ -142,6 +144,7 @@ Tests segment creation:
 
 Tests adding demographics, after respective cluster or segment tests have run
 
+- `python -m tests.src.augment.demographics cluster`
 - `python -m tests.src.augment.demographics new_donors`
 - `python -m tests.src.augment.demographics passport_gifts`
 - `python -m tests.src.augment.demographics passport_only`
