@@ -16,7 +16,7 @@ This suite provides a framework to understand KLRN donors through comprehensive 
 
 Cluster and segment analyses use data downloaded into an .xlsx file from an Allegiance Fundraising database. The Excel file is placed in the `data/raw/` directory.
 
-The database query is constructed with Allegiance's [Analysis Reports](https://alleg.tv/userguides172/FR-AnalysisReports/AnalysisReports.html), using the Pledge type. This is the [specific query](images/2022-09-26-donors.jpg).
+The database query is constructed with Allegiance's [Analysis Reports](https://alleg.tv/userguides172/FR-AnalysisReports/AnalysisReports.html), using the Pledge type. This is the [specific query](images/2022-09-26-donors-query.jpg).
 
 Using a list of donor ids from the Allegiance download, demographics are pulled into a separate .xlsx file from WealthEngine. This Excel file needs to have `AcctID`, `Gender`, `Age`, and `Income` columns. The file is placed in the `data/raw/` directory.
 
