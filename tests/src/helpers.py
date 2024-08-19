@@ -49,7 +49,7 @@ def compare_spreadsheets(path_1, path_2):
         None.
     """
     compare = compare_dfs(path_1, path_2)
-    print('\n' + '='*50)
+    print('\n' + '='*100)
     print('DIFFERENCES BETWEEN:')
     print(f'  - {path_1}')
     print(f'  - {path_2}', '\n')  
