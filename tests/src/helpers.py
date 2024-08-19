@@ -28,8 +28,8 @@ def compare_dfs(f1, f2):
         print('\nFILES DO NOT MATCH, OR ARE NOT .CSV or .XLSX')
         return        
     
-    #print('\nSHAPE DF1:', df1.shape, '\n\n', df1.head())
-    #print('\nSHAPE DF2:', df2.shape, '\n\n', df2.head())
+    #print('\n' + '='*100, '\nFILE:', f1, '\n\nSHAPE DF1:', df1.shape, '\n\n', df1.head())
+    #print('\n' + '='*100, '\nFILE:', f2, '\n\nSHAPE DF2:', df2.shape, '\n\n', df2.head(), '\n')
 
     df1 = df1.round(8)
     df2 = df2.round(8)  
@@ -49,12 +49,10 @@ def compare_spreadsheets(path_1, path_2):
         None.
     """
     compare = compare_dfs(path_1, path_2)
-    print()
-    print('='*50)
+    print('\n' + '='*50)
     print('DIFFERENCES BETWEEN:')
     print(f'  - {path_1}')
-    print(f'  - {path_2}')  
-    print() 
+    print(f'  - {path_2}', '\n')  
     print(compare) 
 
     if compare.columns.empty and compare.index.empty:
