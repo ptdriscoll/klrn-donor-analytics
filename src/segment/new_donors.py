@@ -67,9 +67,16 @@ def segment(df, output_dir):
     agg_catagories = {'Total_Payments':'sum', 'Status':'mean', 'Passport':'mean', 'Gift':'mean', 'Years': 'sum'}
 
     #for each year, create totals from that year to last year in data 
-    years = df['Years'].unique()
+    years = df['Years'].sort_values().unique()
     first_iteration = True
+
+    print('\nYEARS:', years)
+
     for year in years[:-1]: #don't loop last year
+
+        print('='*100)
+        print('\nYEAR:', year)
+
         #filter years and aggregate donors accross those years 
         df_temp = df[df['Years'] >= year]
         donors = df_temp.groupby('ID').agg(agg_donors)             
