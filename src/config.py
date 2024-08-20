@@ -12,7 +12,7 @@ DATA_END = '2024-07-31'
 # references:
 #   -https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html
 #   -https://stackoverflow.com/questions/22205159/format-pandas-datatime-object-to-show-fiscal-years-from-feb-to-feb-and-be-format
-YEAR_CUTOFF = 'Y-AUG' 
+YEAR_CUTOFF = 'Y-JUL' 
 
 # path to Passport database application
 PASSPORT_APP = 'T:\\Public Relations\\ONLINE\\Passport\\STATS'
