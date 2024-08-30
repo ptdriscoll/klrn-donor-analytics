@@ -7,6 +7,7 @@ def parse_args():
     Parses command-line argument that will be translated into an offset alias to be added
     to a pandas dt.to_period() method to set time period frequencies. Options include:
         -annual
+        -monthly
         -weekly
 
     Examples:
@@ -20,7 +21,7 @@ def parse_args():
     parser.add_argument(
         'frequency',
         type=str,
-        help=('Specify time period frequency to plot timeline, e.g. annual or weekly') 
+        help=('Specify time period frequency to plot timeline, e.g. annual, monthly or weekly') 
     )
     arg, unknown = parser.parse_known_args()
     return arg.frequency
