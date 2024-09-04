@@ -21,6 +21,8 @@ def parse_args():
     parser.add_argument(
         'frequency',
         type=str,
+        nargs='?',
+        default='annual',
         help=('Specify time period frequency to plot timeline, e.g. annual, monthly or weekly') 
     )
     arg, unknown = parser.parse_known_args()
