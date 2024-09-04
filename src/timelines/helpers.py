@@ -1,6 +1,6 @@
 import argparse
 from src.process.helpers import clean
-from src import DATA_DONORS_RAW, DATA_DONORS_WORKING
+from src import DATA_DONORS_RAW, DATA_DONORS_WORKING, YEAR_CUTOFF
 
 def parse_args():
     """
@@ -38,3 +38,24 @@ def get_data():
     cols_keep = ['Count', 'Paid to Date', 'Balance']
     df = clean(DATA_DONORS_RAW, DATA_DONORS_WORKING, cols_new, cols_keep)
     return df
+
+def get_time_frequency(time_period):
+    """
+    Gets column name, and code used as freq argument in pd.to_datetime(df['Date']).dt.to_period('M'). 
+
+    Args:
+        time_period (str): Desired time period frequency for timeline.   
+
+    Returns:
+        list[str]: [column name, freq argument to be used in pd.to_datetime()].                
+    
+    Reference:
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html  
+    """  
+    freq = {
+        'weekly': ['Week', 'W-SUN'],
+        'monthly': ['Month', 'M'],
+        'annual': ['Year', YEAR_CUTOFF]
+    }
+
+    return freq[time_period]
