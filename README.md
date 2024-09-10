@@ -96,8 +96,12 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
   - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
 
 <p align="center">
-  <img src="images/cluster_elbow.png" width="50%" alt="Elbow Plot"/>
-  <img src="images/cluster_model_4.png" width="44.5%" alt="PCA Cluster Model"/>
+  <a href="/ptdriscoll/klrn-donor-analytics-suite/blob/main/images/cluster_elbow.png" style="display: inline;">
+    <img src="/ptdriscoll/klrn-donor-analytics-suite/raw/main/images/cluster_elbow.png" width="50%" alt="Elbow Plot"/>
+  </a>
+  <a href="/ptdriscoll/klrn-donor-analytics-suite/blob/main/images/cluster_model_4.png" style="display: inline;">
+    <img src="/ptdriscoll/klrn-donor-analytics-suite/raw/main/images/cluster_model_4.png" width="44.5%" alt="PCA Cluster Model"/>
+  </a>
 </p>
 
 Creates donor segments, first clearing the respective folder in `output/<segment>` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
