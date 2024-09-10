@@ -69,10 +69,17 @@ def get_time_frequency(time_period):
 
     return freq[time_period]
 
+def add_category_column(df, categories):
+    if categories == 'all':
+        df['Category'] = 'Donations'
+
+    return df    
+
 def create_timeline(
     df,
     output_file,
     time_period,
+    categories = 'all',
     date_start=DATA_START,
     date_end=DATA_END
 ):
@@ -82,8 +89,8 @@ def create_timeline(
         -creates Payments and Category columns
         -drops unneeded columns
         -turns Date column into time frequencies
-        -creates pivot table with Date as the index, categories as 
-         the columns, and Payments summed
+        -creates pivot table with Date as index, categories as 
+         columns, and Payments summed
         -saves csv file as output_file        
 
     Args:
@@ -96,7 +103,7 @@ def create_timeline(
 
     df = df[(df['Date'] >= date_start) & (df['Date'] <= date_end)] #filter by date range    
     df['Payments'] = df['Paid to Date'] + df['Balance'] #add paid and 
-    df['Category'] = 'Donations' #add category segments (or make all 'Donations')
+    df = add_category_column(df, categories) #add segments (or all 'Donations')
     df = df[['Date', 'Payments', 'Category']] #keep only needed fields
 
     #create timeline frequencies
