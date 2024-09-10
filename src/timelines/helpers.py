@@ -1,6 +1,13 @@
 import argparse
+import pandas as pd
 from src.process.helpers import clean
-from src import DATA_DONORS_RAW, DATA_DONORS_WORKING, YEAR_CUTOFF
+from src import (
+    DATA_DONORS_RAW, 
+    DATA_DONORS_WORKING, 
+    YEAR_CUTOFF,
+    DATA_START, 
+    DATA_END
+)
 
 def parse_args():
     """
@@ -43,21 +50,66 @@ def get_data():
 
 def get_time_frequency(time_period):
     """
-    Gets column name, and code used as freq argument in pd.to_datetime(df['Date']).dt.to_period('M'). 
+    Gets freq argument to be used in pd.to_datetime(df['Date']).dt.to_period('M'). 
 
     Args:
         time_period (str): Desired time period frequency for timeline.   
 
     Returns:
-        list[str]: [column name, freq argument to be used in pd.to_datetime()].                
+        str: freq argument to be used in pd.to_datetime().                
     
     Reference:
         https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html  
     """  
     freq = {
-        'weekly': ['Week', 'W-SUN'],
-        'monthly': ['Month', 'M'],
-        'annual': ['Year', YEAR_CUTOFF]
+        'weekly': 'W-SUN',
+        'monthly': 'M',
+        'annual': YEAR_CUTOFF
     }
 
     return freq[time_period]
+
+def create_timeline(
+    df,
+    output_file,
+    time_period,
+    date_start=DATA_START,
+    date_end=DATA_END
+):
+    """
+    Gets member donation data file and then:
+        -filters by date_start and date_end
+        -creates Payments and Category columns
+        -drops unneeded columns
+        -turns Date column into time frequencies
+        -creates pivot table with Date as the index, categories as 
+         the columns, and Payments summed
+        -saves csv file as output_file        
+
+    Args:
+        df (pandas.DataFrame):  dataframe of donations from donors working data in data/processed/.
+        output_file (str): path to where results are saved as a csv file.
+        time_period (str): Desired time period frequency for timeline. 
+        date_start (str): for date range filter, is inclusive, in format 2019-10-01.
+        date_end (str): for date range filter, is inclusive, in format 2022-09-30.
+     """  
+
+    df = df[(df['Date'] >= date_start) & (df['Date'] <= date_end)] #filter by date range    
+    df['Payments'] = df['Paid to Date'] + df['Balance'] #add paid and 
+    df['Category'] = 'Donations' #add category segments (or make all 'Donations')
+    df = df[['Date', 'Payments', 'Category']] #keep only needed fields
+
+    #create timeline frequencies
+    freq_arg = get_time_frequency(time_period)
+    df['Date'] = pd.to_datetime(df['Date']).dt.to_period(freq_arg) #set time period
+
+    table = df.pivot_table(index='Date', 
+                       columns='Category', 
+                       values='Payments', 
+                       aggfunc='sum', 
+                       fill_value=0)
+
+    table.index.name = None
+    table.columns.name = None
+    table.to_csv(output_file)
+ 
