@@ -2,7 +2,7 @@ import os
 import sys
 from src.helpers import get_data, get_output_dir
 
-def set_categories(df, output_dir):
+def set_categories(df, output_dir=None):
     """
     Creates a Category column in df and sets values based on Passport and Gift flags:
         0: Neither
@@ -32,8 +32,10 @@ def set_categories(df, output_dir):
 
     print('\nDF SHAPE:', df.shape)
     print('\n', df.tail(15))
-
-    df.to_csv(os.path.join(output_dir, 'assignments.csv'), index=False)
+    
+    if output_dir:
+        df.to_csv(os.path.join(output_dir, 'assignments.csv'), index=False)
+        
     return df
 
 def aggregate(df, output_dir):

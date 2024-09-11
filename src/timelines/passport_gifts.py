@@ -8,8 +8,9 @@ def main():
     arg = parse_args()
     df = get_data() 
     output_dir = get_output_dir('timelines') 
-    output_file = os.path.join(output_dir, f'all_{arg}.csv')  
-    create_timeline(df, output_file, arg, categories='all')
+    output_file = os.path.join(output_dir, f'passport_gifts_{arg}.csv')
+
+    create_timeline(df, output_file, arg, categories='passport_gifts')
 
 if __name__ == '__main__':
     sys.exit(main())
