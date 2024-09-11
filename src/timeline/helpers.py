@@ -25,7 +25,7 @@ def parse_args():
     Returns:
         str: time period specified by the user.
     """
-    parser = argparse.ArgumentParser(description='Run timelines module')
+    parser = argparse.ArgumentParser(description='Run timeline module')
     parser.add_argument(
         'frequency',
         type=str,

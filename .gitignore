@@ -34,13 +34,13 @@ tests/output_expected/cluster/*
 tests/output_expected/new_donors/*
 tests/output_expected/passport_gifts/*
 tests/output_expected/passport_only/*
-tests/output_expected/timeslines/*
+tests/output_expected/timesline/*
 
 !tests/output_expected/cluster/.gitkeep
 !tests/output_expected/new_donors/.gitkeep
 !tests/output_expected/passport_gifts/.gitkeep
 !tests/output_expected/passport_only/.gitkeep
-!tests/output_expected/timeslines/.gitkeep
+!tests/output_expected/timesline/.gitkeep
 
 # additional files
 reference/
