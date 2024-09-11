@@ -90,6 +90,9 @@ def add_category_column(df, categories):
         df['Gift'] = df['Gift'].map({'YES': 1, 'NO': 0})
         df = set_categories(df) 
 
+    if categories == 'new_other':
+        df['Category'] = df['Type'].map(lambda x: 'New' if x == 'NEW' else 'Other')
+
     return df    
 
 def create_timeline(
