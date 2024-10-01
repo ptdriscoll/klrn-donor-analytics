@@ -164,7 +164,7 @@ Tests adding Passport views, after respective cluster or segment commands have r
 - `python -m tests.src.augment.passport passport_gifts`
 - `python -m tests.src.augment.passport passport_only`
 
-Tests timelines - the `time_interval` argument can be `annual`, `monthly`, `weekly` or left empty (if left empty, it defaults to `annual`):
+Tests timeline creation - the `time_interval` argument can be `annual`, `monthly`, `weekly` or left empty (if left empty, it defaults to `annual`):
 
 - `python -m tests.src.timeline.all <time_interval>`
 - `python -m tests.src.timeline.new_other <time_interval>`
