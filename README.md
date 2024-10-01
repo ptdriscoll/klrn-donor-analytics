@@ -104,25 +104,31 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
   </a>
 </p>
 
-Creates donor segments, first clearing the respective folder in `output/<segment>` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
+Creates donor segments, first clearing the respective folder in `output/<segment>/` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
 
 - `python -m src.segment.new_donors`
 - `python -m src.segment.passport_gifts`
 - `python -m src.segment.passport_only`
 
-Demographics per group can be added after cluster or segment commands have run, with `demographics.csv` outputted to respective folder in `output/<segment>`:
+Demographics per group can be added after cluster or segment commands have run, with `demographics.csv` outputted to respective folder in `output/<segment>/`:
 
 - `python -m src.augment.demographics cluster`
 - `python -m src.augment.demographics new_donors`
 - `python -m src.augment.demographics passport_gifts`
 - `python -m src.augment.demographics passport_only`
 
-Passport PBS video views per group can be added after cluster or segment commands have run, and if the [Passport database app](https://github.com/ptdriscoll/klrn-passport-analytics-database) is available, with `demographics_<group>.csv` files outputted to respective folder in `output/<segment>`:
+Passport PBS video views per group can be added after cluster or segment commands have run, and if the [Passport database app](https://github.com/ptdriscoll/klrn-passport-analytics-database) is available, with `demographics_<group>.csv` files outputted to respective folder in `output/<segment>/`:
 
 - `python -m src.augment.passport cluster`
 - `python -m src.augment.passport new_donors`
 - `python -m src.augment.passport passport_gifts`
 - `python -m src.augment.passport passport_only`
+
+Creates timelines, first clearing `output/timeline/` and then outputting there (if needed, runs `src.process.donors`) - the `time_interval` argument can be `annual`, `monthly`, `weekly` or left empty (if left empty, it defaults to `annual`):
+
+- `python -m src.timeline.all <time_interval>`
+- `python -m src.timeline.new_other <time_interval>`
+- `python -m src.timeline.passport_gifts <time_interval>`
 
 ### Running Tests
 
@@ -157,6 +163,12 @@ Tests adding Passport views, after respective cluster or segment commands have r
 - `python -m tests.src.augment.passport new_donors`
 - `python -m tests.src.augment.passport passport_gifts`
 - `python -m tests.src.augment.passport passport_only`
+
+Tests timelines - the `time_interval` argument can be `annual`, `monthly`, `weekly` or left empty (if left empty, it defaults to `annual`):
+
+- `python -m tests.src.timeline.all <time_interval>`
+- `python -m tests.src.timeline.new_other <time_interval>`
+- `python -m tests.src.timeline.passport_gifts <time_interval>`
 
 ### KLRN Analytic Reports
 
