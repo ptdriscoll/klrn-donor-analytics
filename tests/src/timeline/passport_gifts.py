@@ -9,15 +9,12 @@ def main():
     arg = parse_args()
     df = get_data() 
     output_dir = get_output_dir('timeline') 
-    output_expected_dir = output_dir.replace('output', 'output_expected')
     output_file = os.path.join(output_dir, f'passport_gifts_{arg}.csv')
-
+    output_file_expected = output_file.replace('output', 'output_expected')
     create_timeline(df, output_file, arg, categories='passport_gifts')
 
     #compare csv files
-    timeline = os.path.join(output_dir, output_file)
-    timeline_expected = os.path.join(output_expected_dir, output_file)
-    compare_spreadsheets(timeline, timeline_expected)
+    compare_spreadsheets(output_file, output_file_expected)
 
 if __name__ == '__main__':
     sys.exit(main())
