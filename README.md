@@ -8,6 +8,8 @@ A comprehensive suite of Python tools to analyze KLRN TV donors. Features includ
 
 - **Data Augmentation:** Enhances analyses with additional layers of demographics and PBS Passport viewing data
 
+- **Timeline Creation:** Generates timelines, including segmented timelines, with options to use time intervals of annual, monthly or weekly.
+
 This suite provides a framework to understand KLRN donors through comprehensive analysis and data integration.
 
 ![KLRN Donor Profiles](images/KLRN_Donor_Profiles_2022.png)
@@ -31,6 +33,7 @@ Verified spreadsheets for expected outcomes are placed in `tests/data_expected/`
 - `tests/output_expected/new_donors/`
 - `tests/output_expected/passport_gifts/`
 - `tests/output_expected/passport_only/`
+- `tests/output_expected/timeline/`
 
 ### Config Setup
 
