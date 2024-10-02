@@ -96,11 +96,11 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
   - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
 
 <p align="center">
-  <a href="/ptdriscoll/klrn-donor-analytics-suite/blob/main/images/cluster_elbow.png" style="display: inline;">
-    <img src="/ptdriscoll/klrn-donor-analytics-suite/raw/main/images/cluster_elbow.png" width="50%" alt="Elbow Plot"/>
+  <a href="images/cluster_elbow.png" style="display: inline;">
+    <img src="images/cluster_elbow.png" width="50%" alt="Elbow Plot"/>
   </a>
-  <a href="/ptdriscoll/klrn-donor-analytics-suite/blob/main/images/cluster_model_4.png" style="display: inline;">
-    <img src="/ptdriscoll/klrn-donor-analytics-suite/raw/main/images/cluster_model_4.png" width="44.5%" alt="PCA Cluster Model"/>
+  <a href="images/cluster_model_4.png" style="display: inline;">
+    <img src="images/cluster_model_4.png" width="44.5%" alt="PCA Cluster Model"/>
   </a>
 </p>
 
