@@ -78,12 +78,12 @@ def process_data(
 
     print('df1', df1['ID'].unique().size)   
 
-    #refactor date_end to the same date the year before
+    #get date_end_year_before as same date the year before date_end
     date_end_obj = datetime.strptime(date_end, '%Y-%m-%d')
     date_year_before_obj = date_end_obj - relativedelta(years=1)
     date_end_year_before = date_year_before_obj.strftime('%Y-%m-%d') 
 
-    #keep new donors up to a year before, but all their activity through date_end
+    #keep new donors up to date_end_year_before, but all their activity through date_end
     df_new = df[(df['Type'].str.strip() == 'NEW')
                 & (df['Date'] <= date_end_year_before)]
     ids_new = df_new['ID'].unique()
