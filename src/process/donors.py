@@ -110,7 +110,7 @@ def process_data(
         'Gift': 'mean',    
         'Rejoin': 'mean',
         'Renew': 'mean',
-         'Add': 'mean',     
+        'Add': 'mean',     
         'New': 'mean',
         'Online': 'mean',
         'Date': 'nunique'

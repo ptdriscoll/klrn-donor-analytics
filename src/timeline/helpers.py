@@ -123,7 +123,7 @@ def create_timeline(
      """  
 
     df = df[(df['Date'] >= date_start) & (df['Date'] <= date_end)] #filter by date range    
-    df['Payments'] = df['Paid to Date'] + df['Balance'] #add paid and 
+    df['Payments'] = df['Paid to Date'] + df['Balance'] #add paid and balance
     df = add_category_column(df, categories) #add segments (or all 'Donations')
     df = df[['Date', 'Payments', 'Category']] #keep only needed fields
 
