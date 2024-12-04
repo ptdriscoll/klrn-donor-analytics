@@ -122,8 +122,6 @@ Demographics per group can be added after cluster or segment commands have run, 
 - `python -m src.augment.demographics passport_gifts`
 - `python -m src.augment.demographics passport_only`
 
-![KLRN Donor Profiles](images/KLRN_Donor_Retention_Rates_2024.png)
-
 Passport PBS video views per group can be added after cluster or segment commands have run, and if the [Passport database app](https://github.com/ptdriscoll/klrn-passport-analytics-database) is available, with `demographics_<group>.csv` files outputted to respective folder in `output/<segment>/`:
 
 - `python -m src.augment.passport cluster`
