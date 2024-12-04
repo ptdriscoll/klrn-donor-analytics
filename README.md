@@ -133,6 +133,8 @@ Creates timelines, first clearing `output/timeline/` and then outputting there (
 - `python -m src.timeline.new_other <time_interval>`
 - `python -m src.timeline.passport_gifts <time_interval>`
 
+![KLRN Donor Profiles](images/KLRN_Donation_Timelines_2024.png)
+
 ### Running Tests
 
 Tests processing data:
