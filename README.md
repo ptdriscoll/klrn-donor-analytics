@@ -94,6 +94,9 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
 - `python -m src.cluster.pca_plots <number> <number>`
   - Evaluates optimal number of clusters by creating PCA model scatterplots that show a range of clusters.
   - The `<number> <number>` parameters are both optional; you can provide both, one or none. If omitted, the second argument defaults to one higher than the first, and the first defaults to `3`. So, no arguments would default to `3 4` and generate one plot of three clusters.
+- `python -m src.cluster.kmeans <number>`
+  - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots.
+  - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
 
 <p align="center">
   <a href="images/cluster_elbow.png" style="display: inline;">
@@ -104,15 +107,13 @@ Runs cluster analysis, first clearing `output/cluster/` and then outputting ther
   </a>
 </p>
 
-- `python -m src.cluster.kmeans <number>`
-  - Runs cluster analysis, generates cluster assignments as `assignments.csv`, assignment aggregations as `groups.csv`, and PCA model and group frequencies plots.
-  - The `<number>` parameter is optional; if omitted, it defaults to `4`, creating four cluster groups.
-
 Creates donor segments, first clearing the respective folder in `output/<segment>/` and then outputting `assignments.csv` there (if needed, also runs either `src.process.donors` or `src.process.new_donors`):
 
 - `python -m src.segment.new_donors`
 - `python -m src.segment.passport_gifts`
 - `python -m src.segment.passport_only`
+
+![KLRN Donor Profiles](images/KLRN_Donor_Retention_Rates_2024.png)
 
 Demographics per group can be added after cluster or segment commands have run, with `demographics.csv` outputted to respective folder in `output/<segment>/`:
 
