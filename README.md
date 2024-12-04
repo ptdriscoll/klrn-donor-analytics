@@ -16,7 +16,7 @@ This suite provides a framework to understand KLRN donors through comprehensive 
 
 ### Data Setup
 
-Cluster and segment analyses use data downloaded into an .xlsx file from an Allegiance Fundraising database. The Excel file is placed in the `data/raw/` directory.
+Cluster and segment analyses use data downloaded into an .xlsx file from an Allegiance Fundraising database. The Excel file is placed in the `data/raw/` directory.KLRN Analytic Reports
 
 The database query is constructed with Allegiance's [Analysis Reports](https://alleg.tv/userguides172/FR-AnalysisReports/AnalysisReports.html), using the Pledge type. This is the [specific query](images/2022-09-26-donors-query.jpg).
 
@@ -175,6 +175,9 @@ Tests timeline creation - the `time_interval` argument can be `annual`, `monthly
 
 ### KLRN Analytic Reports
 
+- [Donor Profiles 2024](reports/KLRN_Donor_Profiles_2024.pdf)
+- [Donor Cluster Models 2024](reports/KLRN-Cluster-Models-2024.pdf)
+- [Passport Engagement 2024 (external data)](reports/KLRN_Passport_Engagement_2024.pdf)
 - [Donor Profiles 2022](reports/KLRN_Donor_Profiles_2022.pdf)
 - [Passport Audience 2022](reports/KLRN_Passport_Audience_2022.pdf)
 
