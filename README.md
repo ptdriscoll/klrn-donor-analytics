@@ -173,6 +173,15 @@ Tests timeline creation - the `time_interval` argument can be `annual`, `monthly
 - `python -m tests.src.timeline.new_other <time_interval>`
 - `python -m tests.src.timeline.passport_gifts <time_interval>`
 
+### Data considerations
+
+- A donation is flagged as Passport if Passport was activated within the 1-year pledge window
+- A donation is flagged as having a Gift Premium if the member requested a gift
+- A donation is flagged as new if the member has never donated before
+- A donation can also be flagged as sustaining, rejoin, renew, add or online
+- Also looked at, per donor, were total donations, total payments, current member status, and
+  major donor status
+
 ### KLRN Analytic Reports
 
 - [Donor Profiles 2024](reports/KLRN_Donor_Profiles_2024.pdf)
